@@ -1,9 +1,19 @@
 {
   "name": "redux-state-change-listener",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple library for adding change listeners on a redux state tree",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/testListener.js"
+  },
   "author": "Ranjan Shrestha",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharingapples/redux-state-change-listener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sharingapples/redux-state-change-listener/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
@@ -13,7 +23,8 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "mocha": "^3.2.0",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "sinon": "^1.17.7"
   },
   "peerDependencies": {
     "redux": "^3.6.0"
