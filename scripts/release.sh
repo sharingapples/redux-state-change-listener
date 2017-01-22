@@ -42,6 +42,4 @@ git tag latest -f
 git push origin $next_ref
 git push origin latest -f
 
-node scripts/build.js
-
 npm publish
