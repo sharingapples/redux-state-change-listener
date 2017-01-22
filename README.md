@@ -21,8 +21,10 @@ A callback can be registered to be triggered whenever a specific value on
 a state tree changes. Consider the following example.
 
 ```javascript
-...
-const store = createStore(rootReducer, applyMiddleware());
+const { createStore } = require('redux');
+const ReduxStateChangeListener = require('redux-state-change-listener');
+
+const store = createStore(rootReducer);
 
 // Event called back whenever the todos list is changed
 onTodosChanged = (todos) => {
@@ -62,6 +64,8 @@ stateCallbackManager.register((state, prev) => (
   (state.filter === 'ALL' || state.filter === 'INCOMPLETE') && state.todos !== prev.todos
 ), onActiveTodosChanged, true, true);
 ```
+*NOTE: when the `fireOnTrue` flag is set, the callback is called with the current state
+and the previous state as the first and second parameters.*
 
 ## LICENSE
 MIT License
