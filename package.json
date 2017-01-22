@@ -1,6 +1,6 @@
 {
   "name": "redux-state-change-listener",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple library for adding change listeners on a redux state tree",
   "main": "index.js",
   "scripts": {
