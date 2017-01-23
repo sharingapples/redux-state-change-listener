@@ -27,12 +27,12 @@ const ReduxStateChangeListener = require('redux-state-change-listener');
 const store = createStore(rootReducer);
 
 // Event called back whenever the todos list is changed
-onTodosChanged = (todos) => {
+onTodosChanged = (todos, state) => {
   console.log('New set of todos', todos);
 }
 
 // Event called back whenever the filter is changed
-onFilterChanged = (filter, oldFilter) => {
+onFilterChanged = (filter, state, oldFilter, oldState) => {
   console.log(`Todo visibility filter changed from ${oldFilter} to ${filter}`);
 }
 
@@ -65,7 +65,7 @@ stateCallbackManager.register((state, prev) => (
 ), onActiveTodosChanged, true, true);
 ```
 *NOTE: when the `fireOnTrue` flag is set, the callback is called with the current state
-and the previous state as the first and second parameters.*
+and the previous state as the first and second parameters respectively.*
 
 ## LICENSE
 MIT License
