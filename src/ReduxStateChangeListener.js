@@ -37,11 +37,14 @@ class ReduxStateChangeListener {
         // state part has changed
         const oldValue = this._mappedValues[idx];
         if (newValue !== oldValue) {
-          event.callback(newValue, oldValue);
+          event.callback(newValue, nextState, oldValue, this._state);
         }
 
         return newValue;
       });
+
+      // Set the next state as the current state
+      this._state = nextState;
     });
   }
 
