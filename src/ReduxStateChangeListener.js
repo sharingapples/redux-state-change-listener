@@ -17,34 +17,32 @@ class ReduxStateChangeListener {
 
     // Subscribe to the redux store
     this._unsubscribe = this._store.subscribe(() => {
-      const nextState = this._store.getState();
-      this._mappedValues = this._mappers.map((event, idx) => {
-        const newValue = event.mapper(nextState);
+      const oldState = this._state;
+      this._state = this._store.getState();
+      const oldValues = this._mappedValues;
+      this._mappedValues = this._mappers.map(event => event.mapper(this._state));
+
+      this._mappers.forEach((event, idx) => {
+        const newValue = this._mappedValues[idx];
 
         // handle if the mapper provided a complex logic
         if (event.fireOnTrue && newValue) {
-          event.callback(nextState, this._state);
-          return newValue;
+          event.callback(this._state, oldState);
+          return;
         }
 
         // See if ignore null has been set
         if (event.ignoreNull && newValue === null) {
-          return newValue;
+          return;
         }
-
 
         // The normal use case checking if the values for the given
         // state part has changed
-        const oldValue = this._mappedValues[idx];
+        const oldValue = oldValues[idx];
         if (newValue !== oldValue) {
-          event.callback(newValue, nextState, oldValue, this._state);
+          event.callback(newValue, this._state, oldValue, oldState);
         }
-
-        return newValue;
       });
-
-      // Set the next state as the current state
-      this._state = nextState;
     });
   }
 
