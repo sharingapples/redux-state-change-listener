@@ -42,7 +42,7 @@ stateCallbackManager.register(state => state.todos, onTodosChanged);
 stateCallbackManager.register(state => state.filter, onFilterChanged);
 
 // Start the manager, after which the callbacks would be called whenever
-// the state changes as per the registered event
+// the state changes as per the registered event.
 stateCallbackManager.start();
 ```
 
