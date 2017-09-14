@@ -43,7 +43,7 @@ stateCallbackManager.register(state => state.filter, onFilterChanged);
 
 // Start the manager, after which the callbacks would be called whenever
 // the state changes as per the registered event
-stateManager.start();
+stateCallbackManager.start();
 ```
 
 By default, when the value changes to null, it is not considered as a change and
